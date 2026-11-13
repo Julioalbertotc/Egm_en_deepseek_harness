@@ -1,0 +1,12 @@
+# Entrada para agregar AL FINAL de la lista de tu cordis.patch.yml
+# (app de escritorio: ~/.dsh/profiles/desktop/cordis.patch.yml)
+# No borres ni modifiques las entradas que ya existen.
+# Cambia TU_USUARIO por tu usuario y ajusta la ruta si clonaste EGM en otro lado.
+
+- id: egm-skills
+  name: "@deepseek-ai/dsh-skill-filesystem"
+  config:
+    providerName: egm
+    includeDefaultRoots: false
+    customSkillDirs:
+      - "C:/Users/TU_USUARIO/.dsh/egm/skills"
