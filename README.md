@@ -61,22 +61,27 @@ Tiene que ser completo porque las skills leen archivos de `agents/` (los revisor
 ~/.dsh/profiles/desktop/cordis.patch.yml
 ```
 
-Agrega esta entrada **al final de la lista**, sin tocar las que ya existen (ver [`config/cordis.patch.egm.yml`](config/cordis.patch.egm.yml)):
+Agrega esta entrada **al final de la lista**, sin tocar las que ya existen (ver [`config/cordis.patch.egm.yml`](config/cordis.patch.egm.yml)). **Tiene que ir dentro de `- insert:`**: así DSH sabe que es una fila nueva y no la modificación de una que ya existe.
 
 ```yaml
-- id: egm-skills
-  name: "@deepseek-ai/dsh-skill-filesystem"
-  config:
-    providerName: egm
-    includeDefaultRoots: false
-    customSkillDirs:
-      - "C:/Users/TU_USUARIO/.dsh/egm/skills"
+- insert:
+    - id: egm-skills
+      name: "@deepseek-ai/dsh-skill-filesystem"
+      config:
+        providerName: egm
+        includeDefaultRoots: false
+        customSkillDirs:
+          - "C:/Users/TU_USUARIO/.dsh/egm/skills"
 ```
+
+Usa espacios, no tabulaciones.
 
 Cambia la ruta por la tuya (en Linux/macOS sería algo como `/home/tu_usuario/.dsh/egm/skills`).
 
 Por qué esa configuración:
 
+- `insert:`: sin esto, una entrada con `id` se interpreta como un cambio a una fila que ya existe. Como `egm-skills` no existe, DSH la ignora sin avisar y las skills no aparecen.
+- `customSkillDirs` es una carpeta que **contiene** skills (se lee un solo nivel), no la carpeta de una skill.
 - `id: egm-skills`: un id propio, para no chocar con la entrada `skill-filesystem` que pueda traer el perfil base.
 - `includeDefaultRoots: false`: evita que este proveedor vuelva a escanear las carpetas de skills que DSH ya lee.
 - No lo probé en perfiles distintos a `desktop` (web, headless). Ahí busca el `cordis.patch.yml` de tu perfil.
@@ -110,6 +115,8 @@ Las skills de EGM traen `disable-model-invocation: true`: **no salen en el catá
 | Una skill no aparece | DSH toma el nombre del `name:` del `SKILL.md`, no de la carpeta. Deben coincidir |
 | Error leyendo `agents/` o `resources/` | Usa rutas absolutas (ver `AGENTS.egm.md`) |
 | El perfil se resetea | La app es dueña del perfil `desktop`. Si cambias ajustes y reescribe el archivo, vuelve a revisar la entrada |
+| No salen las `egm-*` y no hay ningún error | Que la entrada esté dentro de `- insert:`. Sin eso DSH la descarta en silencio |
+| Una skill no aparece aunque todo lo demás esté bien | DSH ignora sin avisar un `SKILL.md` inválido: la primera línea debe ser `---` y `name:` debe ser kebab-case |
 
 ## Créditos
 
