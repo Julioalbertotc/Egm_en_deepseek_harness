@@ -10,7 +10,7 @@ Hazlo directo, sin analizar de más.
 
 2. Lee docs/harnesses.md del repo para ver cómo se usa en un harness que no está en la lista oficial.
 
-3. Registra la carpeta skills/ del repo como directorio de skills de DSH: agrega al FINAL del cordis.patch.yml de mi perfil una entrada nueva con estos datos, sin tocar ni borrar las existentes:
+3. Registra la carpeta skills/ del repo como directorio de skills de DSH. Mi perfil es el de la app de escritorio: ~/.dsh/profiles/desktop/cordis.patch.yml. Agrega al FINAL de la lista una entrada nueva con estos datos, sin tocar ni borrar las existentes:
    - id: egm-skills
    - name: "@deepseek-ai/dsh-skill-filesystem"
    - config: providerName: egm, includeDefaultRoots: false, customSkillDirs apuntando a la carpeta skills/ del clon.
