@@ -116,4 +116,4 @@ Las skills de EGM traen `disable-model-invocation: true`: **no salen en el catá
 - **DeepSeek Harness:** DeepSeek AI, MIT.
 - Esta guía no incluye código de EGM, solo instrucciones de instalación.
 
-- **Esta guía:** © 2026 Julio Alberto Trejo Cruz, licencia Apache 2.0 (ver [LICENSE](LICENSE)).
+**Esta guía:** © 2026 Julio Alberto Trejo Cruz, licencia Apache 2.0 (ver [LICENSE](LICENSE)).
