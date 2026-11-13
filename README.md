@@ -26,6 +26,7 @@ El repo oficial trae instalación para Antigravity, Claude Code y Codex. DSH no 
 | DeepSeek Harness | App de escritorio, Windows, perfil `desktop` |
 | EGM | v0.1.1 (commit `270b103`) |
 | Modelo | DeepSeek-V4.1-Flash |
+| Paquete de skills | @deepseek-ai/dsh-skill-filesystem 0.2.2-rc.3 (DSH 0.2.2-rc.3) |
 
 Si lo pruebas en otro sistema, perfil o versión, abre un issue o PR con tu resultado.
 
