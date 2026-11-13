@@ -20,7 +20,13 @@ Hazlo directo, sin analizar de más.
 
 5. Comprueba que puedes crear subagentes con contexto limpio: lanza uno y pídele que diga qué sabe de esta conversación. Si hereda el contexto, avísame, porque entonces las revisiones Goldfish no sirven.
 
-6. Crea (o actualiza sin borrar lo que haya) el AGENTS.md en la raíz del espacio de trabajo actual con las reglas de AGENTS.egm.md de este repo: rutas absolutas, despacho directo sin synthesizer, Goldfish con contexto limpio, y "EGM artifact directory: docs/designs".
+6. Crea (o actualiza sin borrar lo que haya) el AGENTS.md en la raíz del espacio de trabajo actual, agregando al final esta sección con rutas absolutas del clon real:
+
+## EGM
+- Las skills de EGM están en <RUTA_ABSOLUTA_DEL_CLON>. Usa SIEMPRE rutas absolutas para agents\ y resources\. Nunca rutas relativas ni ${CLAUDE_PLUGIN_ROOT}.
+- Los subagentes solo pueden bajar 1 nivel de profundidad. En /egm-review y /egm-brainstorm NO uses el synthesizer. Usa despacho directo: tú (el agente principal) lanzas cada Goldfish como subagente general-purpose y le dices que lea primero su persona en <RUTA_ABSOLUTA_DEL_CLON>\agents\<persona>.md.
+- Cada Goldfish debe lanzarse con contexto limpio: solo pásale el documento a revisar, las rutas absolutas y su persona. Nada de la conversación.
+- EGM artifact directory: docs/designs
 
 7. Al final dime en pocas líneas qué quedó instalado, qué no funcionó y cómo reinicio DSH para usar /egm-brainstorm.
 
